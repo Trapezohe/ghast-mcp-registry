@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T11:00:00.000Z",
+  "generatedAt": "2026-05-14T04:34:42.329Z",
   "servers": [
     {
       "id": "filesystem",
@@ -14,7 +14,12 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
       "license": "MIT",
       "category": "files",
-      "tags": ["filesystem", "files", "official", "anthropic"],
+      "tags": [
+        "filesystem",
+        "files",
+        "official",
+        "anthropic"
+      ],
       "featured": true,
       "verified": true,
       "installations": [
@@ -47,9 +52,17 @@
               "required": true
             }
           ],
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-filesystem",
+        "mcp-server-filesystem"
       ]
     },
     {
@@ -65,7 +78,13 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
       "license": "MIT",
       "category": "web",
-      "tags": ["web", "http", "fetch", "official", "anthropic"],
+      "tags": [
+        "web",
+        "http",
+        "fetch",
+        "official",
+        "anthropic"
+      ],
       "featured": true,
       "verified": true,
       "installations": [
@@ -79,7 +98,9 @@
           },
           "config": {
             "command": "uvx",
-            "args": ["mcp-server-fetch"]
+            "args": [
+              "mcp-server-fetch"
+            ]
           },
           "prerequisites": [
             {
@@ -89,8 +110,14 @@
               "ja": "uv (https://docs.astral.sh/uv/) — `brew install uv` または公式ドキュメント参照"
             }
           ],
-          "transports": ["stdio"]
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "mcp-server-fetch",
+        "@modelcontextprotocol/server-fetch"
       ]
     },
     {
@@ -106,7 +133,13 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
       "license": "MIT",
       "category": "dev",
-      "tags": ["github", "git", "dev", "official", "anthropic"],
+      "tags": [
+        "github",
+        "git",
+        "dev",
+        "official",
+        "anthropic"
+      ],
       "featured": true,
       "verified": true,
       "installations": [
@@ -120,7 +153,10 @@
           },
           "config": {
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-github"],
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-github"
+            ],
             "env": {
               "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
             }
@@ -138,9 +174,17 @@
               "required": true
             }
           ],
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-github",
+        "mcp-server-github"
       ]
     },
     {
@@ -156,7 +200,13 @@
       "url": "https://github.com/upstash/context7",
       "license": "MIT",
       "category": "docs",
-      "tags": ["docs", "documentation", "library", "upstash", "popular"],
+      "tags": [
+        "docs",
+        "documentation",
+        "library",
+        "upstash",
+        "popular"
+      ],
       "featured": true,
       "verified": true,
       "installations": [
@@ -170,11 +220,22 @@
           },
           "config": {
             "command": "npx",
-            "args": ["-y", "@upstash/context7-mcp"]
+            "args": [
+              "-y",
+              "@upstash/context7-mcp"
+            ]
           },
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@upstash/context7-mcp",
+        "context7-mcp"
       ]
     },
     {
@@ -190,7 +251,12 @@
       "url": "https://github.com/microsoft/playwright-mcp",
       "license": "Apache-2.0",
       "category": "browser",
-      "tags": ["browser", "playwright", "automation", "microsoft"],
+      "tags": [
+        "browser",
+        "playwright",
+        "automation",
+        "microsoft"
+      ],
       "featured": true,
       "verified": true,
       "installations": [
@@ -204,11 +270,21 @@
           },
           "config": {
             "command": "npx",
-            "args": ["@playwright/mcp@latest"]
+            "args": [
+              "@playwright/mcp@latest"
+            ]
           },
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@playwright/mcp",
+        "playwright-mcp"
       ]
     },
     {
@@ -224,18 +300,33 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
       "license": "MIT",
       "category": "memory",
-      "tags": ["memory", "knowledge-graph", "official", "anthropic"],
+      "tags": [
+        "memory",
+        "knowledge-graph",
+        "official",
+        "anthropic"
+      ],
       "verified": true,
       "installations": [
         {
           "name": "npx",
           "config": {
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-memory"]
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-memory"
+            ]
           },
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-memory"
       ]
     },
     {
@@ -251,18 +342,34 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
       "license": "MIT",
       "category": "thinking",
-      "tags": ["thinking", "reasoning", "official", "anthropic"],
+      "tags": [
+        "thinking",
+        "reasoning",
+        "official",
+        "anthropic"
+      ],
       "verified": true,
       "installations": [
         {
           "name": "npx",
           "config": {
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-sequential-thinking"
+            ]
           },
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-sequential-thinking",
+        "server-sequentialthinking"
       ]
     },
     {
@@ -278,7 +385,13 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
       "license": "MIT",
       "category": "search",
-      "tags": ["search", "web", "brave", "official", "anthropic"],
+      "tags": [
+        "search",
+        "web",
+        "brave",
+        "official",
+        "anthropic"
+      ],
       "verified": true,
       "installations": [
         {
@@ -291,7 +404,10 @@
           },
           "config": {
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-brave-search"
+            ],
             "env": {
               "BRAVE_API_KEY": "${BRAVE_API_KEY}"
             }
@@ -309,9 +425,16 @@
               "required": true
             }
           ],
-          "prerequisites": ["Node.js 18+"],
-          "transports": ["stdio"]
+          "prerequisites": [
+            "Node.js 18+"
+          ],
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-brave-search"
       ]
     },
     {
@@ -327,7 +450,13 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
       "license": "MIT",
       "category": "database",
-      "tags": ["database", "postgres", "sql", "official", "anthropic"],
+      "tags": [
+        "database",
+        "postgres",
+        "sql",
+        "official",
+        "anthropic"
+      ],
       "verified": true,
       "installations": [
         {
@@ -368,8 +497,13 @@
               "ja": "到達可能な PostgreSQL データベース"
             }
           ],
-          "transports": ["stdio"]
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-postgres"
       ]
     },
     {
@@ -385,7 +519,12 @@
       "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack",
       "license": "MIT",
       "category": "communication",
-      "tags": ["slack", "messaging", "official", "anthropic"],
+      "tags": [
+        "slack",
+        "messaging",
+        "official",
+        "anthropic"
+      ],
       "verified": true,
       "installations": [
         {
@@ -398,7 +537,10 @@
           },
           "config": {
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-slack"],
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-slack"
+            ],
             "env": {
               "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
               "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
@@ -437,8 +579,13 @@
               "ja": "インストール済みの Slack アプリ"
             }
           ],
-          "transports": ["stdio"]
+          "transports": [
+            "stdio"
+          ]
         }
+      ],
+      "detectionHints": [
+        "@modelcontextprotocol/server-slack"
       ]
     }
   ]

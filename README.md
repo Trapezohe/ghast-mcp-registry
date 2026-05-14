@@ -15,7 +15,31 @@ required.
 https://raw.githubusercontent.com/Trapezohe/ghast-mcp-registry/main/registry.json
 ```
 
+## Requesting a new server be listed
+
+Open an issue in this repo with the **[Registry]** title prefix —
+the in-app "提交收录请求 / Submit listing request" button on the
+marketplace toolbar pre-fills one for you.
+
 ## Schema
+
+User-facing prose fields (`description`, `installation.description`,
+`parameter.description`, and individual `prerequisites[]` entries)
+may be either:
+
+- **a plain string** — applies to every locale, or
+- **a `{ locale: text, ... }` object** keyed by BCP-47 codes
+  (`en`, `zh-CN`, `zh-TW`, `ja`, `ko`, `fr`, etc.).
+
+The client resolves the best available string for the user's current
+language with a fallback chain (exact match → base language match →
+`en` → first non-empty entry). English (`en`) is the registry's
+lingua franca — please always include an `en` translation.
+
+Identifiers and technical fields (`name`, `author`, `id`, `category`,
+`tags`, `installation.name`, `parameter.name`, `parameter.key`,
+`parameter.placeholder`, `config.command`, etc.) are kept in their
+original form across all locales.
 
 ```jsonc
 {
@@ -25,34 +49,27 @@ https://raw.githubusercontent.com/Trapezohe/ghast-mcp-registry/main/registry.jso
     {
       "id":          "unique slug, used as the marketplace install
                       key (stored as registry_id on disk)",
-      "name":        "display name",
-      "description": "one or two sentences",
+      "name":        "display name (kept in original form)",
+      "description": "string | { en, zh-CN, zh-TW, ja, … }",
       "author":      "vendor or person",
       "url":         "(optional) homepage / repo link",
       "license":     "(optional) SPDX id e.g. MIT, Apache-2.0",
-      "category":    "(optional) bucket the marketplace UI groups by
-                      — files / web / dev / search / database /
-                      browser / docs / thinking / memory /
-                      communication",
+      "category":    "(optional) bucket the marketplace UI groups by",
       "tags":        ["(optional)", "string", "array"],
-      "featured":    "(optional) true → marketplace UI pins the
-                      server near the top",
-      "verified":    "(optional) true → marketplace UI renders the
-                      verified badge",
+      "featured":    "(optional) true → pinned in marketplace",
+      "verified":    "(optional) true → verified badge in UI",
       "installations": [
         {
-          "name":          "display name of this install variant
-                            (e.g. 'npx', 'docker', 'macOS via brew')",
-          "description":   "(optional) extra context for this
-                            install path specifically",
+          "name":          "install variant label (e.g. 'npx',
+                            'docker', 'macOS via brew')",
+          "description":   "(optional) string | { en, zh-CN, … }",
           "config":        "MCP server config — same shape as the
                             Settings UI manual-entry form",
-          "prerequisites": "(optional) array of plain-text strings,
-                            shown as bullet points before install",
-          "parameters":    "(optional) array of fill-in fields; the
-                            install dialog substitutes `${VAR}`
-                            references inside `config` with the
-                            user-entered values",
+          "prerequisites": "(optional) array; each entry is either a
+                            string or a { en, zh-CN, … } object",
+          "parameters":    "(optional) array; descriptions inside
+                            each parameter can be localised — see
+                            below",
           "transports":    "(optional) array — 'stdio' / 'http' /
                             'sse'. Informational only for now."
         }
@@ -61,6 +78,21 @@ https://raw.githubusercontent.com/Trapezohe/ghast-mcp-registry/main/registry.jso
   ]
 }
 ```
+
+### Localised description example
+
+```json
+{
+  "description": {
+    "en": "Read and write the local filesystem.",
+    "zh-CN": "读写本地文件系统。",
+    "ja": "ローカルファイルシステムを読み書き。"
+  }
+}
+```
+
+A plain-string `description` is still valid; it just shows the same
+text to every locale.
 
 ### `config` shape (stdio command)
 
@@ -87,7 +119,10 @@ https://raw.githubusercontent.com/Trapezohe/ghast-mcp-registry/main/registry.jso
 ```json
 {
   "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
-  "description": "GitHub PAT — repo scope minimum",
+  "description": {
+    "en": "GitHub PAT — repo scope minimum.",
+    "zh-CN": "GitHub PAT —— 至少需要 repo 权限。"
+  },
   "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxx",
   "required": true
 }
@@ -100,9 +135,9 @@ config to the Ghast DB.
 
 ## Contributing
 
-Open a PR adding a new server entry. Please keep the catalogue tight
-— this is a curated marketplace, not an exhaustive index. Servers
-should have:
+Open a PR adding or editing server entries. Please keep the
+catalogue tight — this is a curated marketplace, not an exhaustive
+index. Servers should have:
 
 - a real homepage / repo URL,
 - a sensible default install (the user should be able to install
@@ -110,4 +145,7 @@ should have:
 - a license (no proprietary-only servers without explicit author
   consent),
 - a working npm / pypi / cargo / brew install path (no source-from-
-  scratch builds).
+  scratch builds),
+- at minimum English (`en`) prose, ideally with `zh-CN` /
+  `zh-TW` / `ja` translations for the description, installation
+  notes, and parameter descriptions.

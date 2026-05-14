@@ -1,0 +1,304 @@
+{
+  "generatedAt": "2026-05-14T10:00:00.000Z",
+  "servers": [
+    {
+      "id": "filesystem",
+      "name": "Filesystem",
+      "description": "读写本地文件系统的 MCP server。让模型直接操作你授权的目录下的文件 —— 读、写、改名、删除、新建、列目录。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "license": "MIT",
+      "category": "files",
+      "tags": ["filesystem", "files", "official", "anthropic"],
+      "featured": true,
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "无需本地安装,首次运行时 npx 自动下载。",
+          "config": {
+            "command": "npx",
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-filesystem",
+              "${ALLOWED_PATH}"
+            ]
+          },
+          "parameters": [
+            {
+              "name": "ALLOWED_PATH",
+              "description": "允许 server 访问的根目录。建议指向一个明确的工作目录,不要给整个 $HOME。",
+              "placeholder": "/Users/yourname/Documents/ghast-workspace",
+              "required": true
+            }
+          ],
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch",
+      "description": "抓取任意 URL 的内容并转成 Markdown 喂给模型。让 Ghast 在对话里直接 “看一下这个网页”,无需切到浏览器。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "license": "MIT",
+      "category": "web",
+      "tags": ["web", "http", "fetch", "official", "anthropic"],
+      "featured": true,
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 uvx 运行",
+          "description": "首次运行时 uvx 自动下载 Python 包。要求本机已安装 uv。",
+          "config": {
+            "command": "uvx",
+            "args": ["mcp-server-fetch"]
+          },
+          "prerequisites": [
+            "uv (https://docs.astral.sh/uv/) —— `brew install uv` 或参考官方文档"
+          ],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "完整的 GitHub API 接入 —— 仓库浏览、issue / PR 增删改、代码搜索、文件读写。让模型直接为你管理仓库。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+      "license": "MIT",
+      "category": "dev",
+      "tags": ["github", "git", "dev", "official", "anthropic"],
+      "featured": true,
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "需要一个 GitHub Personal Access Token。在 https://github.com/settings/tokens 创建,勾选 repo / read:user / read:org 权限。",
+          "config": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-github"],
+            "env": {
+              "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+            }
+          },
+          "parameters": [
+            {
+              "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
+              "description": "GitHub PAT (Personal Access Token)。在 GitHub 设置 → Developer settings → Personal access tokens 创建。",
+              "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxx",
+              "required": true
+            }
+          ],
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "context7",
+      "name": "Context7",
+      "description": "查询任何开源库的最新官方文档 —— React、Next.js、Prisma、Tailwind、Django、Spring Boot 等。让模型不再用过期的 API 答你问题。Upstash 出品。",
+      "author": "Upstash",
+      "url": "https://github.com/upstash/context7",
+      "license": "MIT",
+      "category": "docs",
+      "tags": ["docs", "documentation", "library", "upstash", "popular"],
+      "featured": true,
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "免费使用,不需要 API key。",
+          "config": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp"]
+          },
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "description": "用 Playwright 在真实 Chromium 里跑浏览器操作 —— 导航、点击、填表、截图。比 computer-use 更稳的网页自动化方案。Microsoft 官方维护。",
+      "author": "Microsoft",
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "license": "Apache-2.0",
+      "category": "browser",
+      "tags": ["browser", "playwright", "automation", "microsoft"],
+      "featured": true,
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "首次启动时 Playwright 会下载 Chromium (~150MB)。",
+          "config": {
+            "command": "npx",
+            "args": ["@playwright/mcp@latest"]
+          },
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "name": "Memory",
+      "description": "基于 knowledge graph 的长期记忆 server —— 让模型在对话间记住 entity、关系、观察。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+      "license": "MIT",
+      "category": "memory",
+      "tags": ["memory", "knowledge-graph", "official", "anthropic"],
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "config": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-memory"]
+          },
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "sequential-thinking",
+      "name": "Sequential Thinking",
+      "description": "强制模型把复杂问题拆成显式步骤推理。在多步规划、调试、设计决策这类场景上能明显提高回答质量。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+      "license": "MIT",
+      "category": "thinking",
+      "tags": ["thinking", "reasoning", "official", "anthropic"],
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "config": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+          },
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave Search",
+      "description": "通过 Brave Search API 提供独立于 Google 的网络搜索能力。免费层每月 2000 次。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+      "license": "MIT",
+      "category": "search",
+      "tags": ["search", "web", "brave", "official", "anthropic"],
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "需要 Brave Search API key。在 https://brave.com/search/api/ 注册免费拿到。",
+          "config": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+            "env": {
+              "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+            }
+          },
+          "parameters": [
+            {
+              "name": "BRAVE_API_KEY",
+              "description": "Brave Search API key。在 brave.com/search/api/ 注册后获得。",
+              "placeholder": "BSA...",
+              "required": true
+            }
+          ],
+          "prerequisites": ["Node.js 18+"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "description": "只读连接 PostgreSQL 数据库 —— 查 schema、跑 SELECT、看 explain。安全沙箱,不会改你的数据。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+      "license": "MIT",
+      "category": "database",
+      "tags": ["database", "postgres", "sql", "official", "anthropic"],
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "需要 PostgreSQL 连接串。Server 只会执行 SELECT,不会写数据。",
+          "config": {
+            "command": "npx",
+            "args": [
+              "-y",
+              "@modelcontextprotocol/server-postgres",
+              "${POSTGRES_CONNECTION_STRING}"
+            ]
+          },
+          "parameters": [
+            {
+              "name": "POSTGRES_CONNECTION_STRING",
+              "description": "PostgreSQL 连接串,格式: postgresql://user:password@host:port/database",
+              "placeholder": "postgresql://localhost/mydb",
+              "required": true
+            }
+          ],
+          "prerequisites": ["Node.js 18+", "可访问的 PostgreSQL 数据库"],
+          "transports": ["stdio"]
+        }
+      ]
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "description": "让模型直接发 Slack 消息、读频道历史、管理 channel。Anthropic 官方维护。",
+      "author": "Anthropic",
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack",
+      "license": "MIT",
+      "category": "communication",
+      "tags": ["slack", "messaging", "official", "anthropic"],
+      "verified": true,
+      "installations": [
+        {
+          "name": "通过 npx 运行",
+          "description": "需要 Slack Bot Token (xoxb-) 和 Team ID。",
+          "config": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-slack"],
+            "env": {
+              "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+              "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
+            }
+          },
+          "parameters": [
+            {
+              "name": "SLACK_BOT_TOKEN",
+              "description": "Slack Bot User OAuth Token (xoxb-)。在 api.slack.com/apps 创建 app 后获得。",
+              "placeholder": "xoxb-...",
+              "required": true
+            },
+            {
+              "name": "SLACK_TEAM_ID",
+              "description": "Slack workspace ID (Txxxxxxxx)。auth.test API 可拿到。",
+              "placeholder": "T0123456789",
+              "required": true
+            }
+          ],
+          "prerequisites": ["Node.js 18+", "已安装的 Slack App"],
+          "transports": ["stdio"]
+        }
+      ]
+    }
+  ]
+}

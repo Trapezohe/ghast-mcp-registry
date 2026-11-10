@@ -1,3 +1,5 @@
+<p align="center"><img src="./docs/assets/ghast-logo.png" alt="Ghast AI" width="120" /></p>
+
 # Ghast MCP Registry
 
 This repository hosts the curated catalogue of Model Context Protocol

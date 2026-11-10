@@ -4,7 +4,7 @@
 
 This repository hosts the curated catalogue of Model Context Protocol
 (MCP) servers exposed by **[Ghast](https://ghast.trapezohe.ai)**'s in-
-app marketplace (Settings → MCP 服务器 → 市场).
+app marketplace (Settings → MCP Servers → Marketplace).
 
 The Ghast desktop client fetches `registry.json` from this repo's
 `main` branch on every visit to the marketplace tab, so editing this
@@ -20,7 +20,7 @@ https://raw.githubusercontent.com/Trapezohe/ghast-mcp-registry/main/registry.jso
 ## Requesting a new server be listed
 
 Open an issue in this repo with the **[Registry]** title prefix —
-the in-app "提交收录请求 / Submit listing request" button on the
+the in-app "Submit listing request" button on the
 marketplace toolbar pre-fills one for you.
 
 ## Schema
@@ -86,9 +86,7 @@ original form across all locales.
 ```json
 {
   "description": {
-    "en": "Read and write the local filesystem.",
-    "zh-CN": "读写本地文件系统。",
-    "ja": "ローカルファイルシステムを読み書き。"
+    "en": "Read and write the local filesystem."
   }
 }
 ```
@@ -122,8 +120,7 @@ text to every locale.
 {
   "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
   "description": {
-    "en": "GitHub PAT — repo scope minimum.",
-    "zh-CN": "GitHub PAT —— 至少需要 repo 权限。"
+    "en": "GitHub PAT — repo scope minimum."
   },
   "placeholder": "ghp_xxxxxxxxxxxxxxxxxxxx",
   "required": true
